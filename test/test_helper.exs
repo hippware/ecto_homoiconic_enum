@@ -5,12 +5,13 @@ ExUnit.start()
 alias Ecto.Integration.TestRepo
 
 Application.put_env(:ecto, TestRepo,
-  adapter: Ecto.Adapters.Postgres,
   url: "ecto://postgres:postgres@localhost/ecto_test",
   pool: Ecto.Adapters.SQL.Sandbox)
 
 defmodule Ecto.Integration.TestRepo do
-  use Ecto.Repo, otp_app: :ecto
+  use Ecto.Repo,
+    otp_app: :ecto,
+    adapter: Ecto.Adapters.Postgres
 
   def log(_cmd), do: nil
 end

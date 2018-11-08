@@ -12,7 +12,7 @@ defmodule EctoHomoiconicEnum.Mixfile do
     version: @version,
     elixir: "~> 1.5",
     description: @description,
-    consolidate_protocols: not Mix.env in [:dev, :test],
+    consolidate_protocols: Mix.env not in [:dev, :test],
     deps: deps(),
     package: package()
   ]
@@ -30,7 +30,8 @@ defmodule EctoHomoiconicEnum.Mixfile do
   ]
 
   defp deps do [
-    {:ecto, "~> 2.2"},
+    {:ecto, "~> 3.0"},
+    {:ecto_sql, "~> 3.0"},
     {:postgrex, "~> 0.13", optional: true},
     {:ex_doc, ">= 0.0.0", only: :dev}
   ] end
